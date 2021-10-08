@@ -31,16 +31,27 @@
             </section>
         
 
-            <section class="questions-container" id="questions">
-                <h2 id="question">Question</h2>
-                <ul>
-                    <li class="options"><button class="btn btn-choice ansBtn" id="answer-1" value="0" type="button">answer1</button></li>
-                    <li class="options"><button class="btn btn-choice ansBtn" id="answer-2" value="1" type="button">answer2</button></li>
-                    <li class="options"><button class="btn btn-choice ansBtn" id="answer-3" value="2" type="button">answer3</button></li>
-                    <li class="options"><button class="btn btn-choice ansBtn" id="answer-4" value="3" type="button">answer4</button></li> 
-                </ul>
+            <section id="questions">
+                <div class="questions-container">
+                    <h2 id="question">Question</h2>
+                    <ul>
+                        <li class="options"><button class="btn btn-choice ansBtn" id="answer-1" value="0" type="button">answer1</button></li>
+                        <li class="options"><button class="btn btn-choice ansBtn" id="answer-2" value="1" type="button">answer2</button></li>
+                        <li class="options"><button class="btn btn-choice ansBtn" id="answer-3" value="2" type="button">answer3</button></li>
+                        <li class="options"><button class="btn btn-choice ansBtn" id="answer-4" value="3" type="button">answer4</button></li> 
+                    </ul>
 
+                </div>                   
+            </section>
 
+            <section id="final-score">
+                <div class="final-score-container">
+                    <h2>Quiz Complete!</h2>
+                    <p>Your final score is: <span id="score" class="score-js">0</span></p>
+                    <p>Enter initials: <span class="initials-js"><input placeholder="initials" id="initials" /></span>
+                        <button id="submit-button" class="btn btn-sub">Submit</button>
+                    </p>
+                 </div>
             </section>
 
 

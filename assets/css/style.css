@@ -80,6 +80,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
+        display: none;
         
     }
 
@@ -98,4 +99,31 @@
         padding: 5px;
         margin-bottom:12px;
         cursor: pointer;
+    }
+
+    .final-score-container {
+        width: 500px;
+        height: 280px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        
+
+    }
+
+    .final-score-container h2 {
+        font-size: 30px;
+    }   
+
+    .final-score-container input {
+        height: 25px;
+        margin-left: 5px;
+    }
+
+    .btn-sub {
+        padding: 5px;
+        cursor: pointer;
+        margin-left: 10px;
     }
