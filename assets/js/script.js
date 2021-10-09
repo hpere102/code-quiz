@@ -88,18 +88,30 @@ function questionsStart(id) {
 function answerCheck(event) {
     event.preventDefault();
     response.style.display = "flex";
-    var responseEl = document.createElement("p");
+    var responseEl = document.createElement("div");
     response.appendChild(responseEl);
 
 setTimeout(function() {
-    responseEl.style.display = "none";
+    responseEl.style.display = "none"
+    
 }, 1000);
 
 if (questionsList[questionCounter].correctAnswer === event.target.value) {
     responseEl.textContent = "Correct!";
+    responseEl.style.color = "green";
+    responseEl.style.padding = "5px"
+    responseEl.style.fontSize = "25px";
+    responseEl.style.fontWeight = "light";
+    responseEl.style.fontStyle = "italic";
 } else if (questionsList[questionCounter].correctAnswer !== event.target.value) {
     timeRemaining = (timeRemaining - 10);
     responseEl.textContent = "Wrong!";
+    responseEl.style.color = "red";
+    responseEl.style.padding = "5px";
+    responseEl.style.fontSize = "25px";
+    responseEl.style.fontWeight = "light";
+    responseEl.style.fontStyle = "italic";
+
 }
 if (questionCounter < questionsList.length) {
     questionCounter++;
@@ -114,7 +126,23 @@ function runningScore(event) {
     finalScore.style.display= "none";
     highscores.style.display = "flex";
     var initialsEl = saveInitials.value.toUpperCase();
-    scores.push({saveInitials: initialsEl, score: timeRemaining})
+    scores.push({saveInitials: initialsEl, score: timeRemaining});
+
+    scores = scores.sort((a, b) => {
+        if (a.score , b.score) {
+            return 1;
+        } else  {
+            return -1;
+        }
+
+    });
+
+    scoresEl.innerHTML="";
+    for(var i = 0; i < scores.length; i++) {
+        var newLi = document.createElement("li");
+        newLi.textContent = (initialsEl + ": " + timeRemaining);
+        scoresEl.append(newLi);
+    }
     
 }
 
@@ -128,6 +156,7 @@ answerBtn2.addEventListener('click', answerCheck);
 answerBtn3.addEventListener('click', answerCheck);
 answerBtn4.addEventListener('click', answerCheck);
 
+submitBtn.addEventListener("click", runningScore);
 
 
 

@@ -116,19 +116,25 @@
     }
 
     .final-score-container h2 {
-        font-size: 30px;
+        font-size: 35px;
+        
     }   
 
     .final-score-container input {
         height: 25px;
         margin-left: 5px;
+       
     }
 
     .btn-sub {
         padding: 5px;
         cursor: pointer;
-        margin-left: 10px;
+        
     }
+
+    
+
+
 
     .highscore-container {
         width: 500px;
@@ -161,4 +167,12 @@
         font-size: 30px;
     }
 
+    .response-div {
+        height:2px;
+        width: 500px;
+        background-color: gray;
+        margin-bottom: 10px;
+        color: white;
+    }
+    
     
