@@ -96,6 +96,8 @@ setTimeout(function() {
     
 }, 1000);
 
+
+
 if (questionsList[questionCounter].correctAnswer === event.target.value) {
     responseEl.textContent = "Correct!";
     responseEl.style.color = "green";
@@ -146,6 +148,29 @@ function runningScore(event) {
     
 }
 
+    storeScores();
+    displayScores();
+
+
+function storeScores() {
+    localStorage.setItem("scores", JSON.stringify(scores));
+}
+
+function displayScores() {
+    let storedScores = JSON.parse(localStorage.getItem("scores"));
+
+    if (storedScores !== null) {
+        scores = storedScores;
+    }
+}
+
+function clearScores() {
+    localStorage.clear();
+    scoresEl.innerHTML="";
+}    
+
+
+
 
 
 
@@ -158,8 +183,27 @@ answerBtn4.addEventListener('click', answerCheck);
 
 submitBtn.addEventListener("click", runningScore);
 
+goBackBtn.addEventListener("click", function () {
+    highscores.style.display = "none";
+    intro.style.display = "flex";
+    timeRemaining = 75;
+    time.textContent = ("Time: " + timeRemaining);
 
 
+});
+
+clearBtn.addEventListener("click", clearScores);
+
+viewScoresBtn.addEventListener("click", function () {
+    if (highscores.style.display === "none") {
+        highscores.style.display = "flex";
+    } else if (highscores.style.display === "flex") {
+        highscores.style.display = "none";
+    } else {
+        return alert("No scores to show.");
+    
+    }
+});
 
 
 
