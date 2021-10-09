@@ -1,14 +1,14 @@
 var timeRemaining = 75;
 var time = document.querySelector(".timer");
 var score = document.querySelector("#score");
-var intro = document.querySelector("#intro");
+var intro = document.querySelector(".intro-container");
 var questionCounter = 0;
-var questions = document.querySelector("#questions");
+var questions = document.querySelector(".questions-container");
 var question = document.querySelector("#question");
 var response = document.querySelector("#response");
-var finalScore = document.querySelector("#final-score");
+var finalScore = document.querySelector(".final-score-container");
 var saveInitials = document.querySelector("#initials");
-var highscores = document.querySelector("#highscores");
+var highscores = document.querySelector(".highscore-container");
 var scoresEl = document.querySelector("#scores");
 var scores = [];
 
@@ -18,6 +18,7 @@ answerBtn1 = document.querySelector("#answer-1");
 answerBtn2 = document.querySelector("#answer-2");
 answerBtn3 = document.querySelector("#answer-3");
 answerBtn4 = document.querySelector("#answer-4");
+answerBtn = document.querySelector("button.btn-choice");
 submitBtn = document.querySelector("#submit-button");
 goBackBtn = document.querySelector("#go-back");
 clearBtn = document.querySelector("#clear-scores");
@@ -58,7 +59,7 @@ function setTimer() {
         if (timeRemaining === 0 || questionCounter === questionsList.length) {
             clearInterval(timerInterval);
             questions.style.display = "none";
-            finalScore.style.display = "block";
+            finalScore.style.display = "flex";
             score.textContent = timeRemaining;
         }
     }, 1000);
@@ -66,19 +67,19 @@ function setTimer() {
 
 function startQuiz () {
     intro.style.display = "none";
-    questions.style.display = "block";
+    questions.style.display = "flex";
     questionCounter = 0;
     setTimer()
-    QuestionsStart(questionCounter);
+    questionsStart(questionCounter);
 }
 
 function questionsStart(id) {
     if (id< questionsList.length) {
         question.textContent = questionsList[id].question;
-        answerBtn1.textContent = questions[id].answer[0];
-        answerBtn2.textContent = questions[id].answer[1];
-        answerBtn3.textContent = questions[id].answer[2];
-        answerBtn4.textContent = questions[id].answer[3];
+        answerBtn1.textContent = questionsList[id].answer[0];
+        answerBtn2.textContent = questionsList[id].answer[1];
+        answerBtn3.textContent = questionsList[id].answer[2];
+        answerBtn4.textContent = questionsList[id].answer[3];
         
     }
 }
@@ -86,21 +87,21 @@ function questionsStart(id) {
 
 function answerCheck(event) {
     event.preventDefault();
-    response.style.display = "block";
+    response.style.display = "flex";
     var responseEl = document.createElement("p");
-    response.appendChild(p);
+    response.appendChild(responseEl);
 
 setTimeout(function() {
-    p.style.display = "none";
+    responseEl.style.display = "none";
 }, 1000);
 
 if (questionsList[questionCounter].correctAnswer === event.target.value) {
-    p.textContent = "Correct!";
+    responseEl.textContent = "Correct!";
 } else if (questionsList[questionCounter].correctAnswer !== event.target.value) {
-    timeRemaining = timeRemaining - 10;
-    p.textContent = "Wrong!";
+    timeRemaining = (timeRemaining - 10);
+    responseEl.textContent = "Wrong!";
 }
-if (questionCounter < questions.length) {
+if (questionCounter < questionsList.length) {
     questionCounter++;
 }
 
@@ -111,15 +112,21 @@ questionsStart(questionCounter)
 function runningScore(event) {
     event.preventDefault();
     finalScore.style.display= "none";
+    highscores.style.display = "flex";
+    var initialsEl = saveInitials.value.toUpperCase();
+    scores.push({saveInitials: initialsEl, score: timeRemaining})
     
 }
 
 
 
 
+startBtn.addEventListener("click", startQuiz);
 
-
-
+answerBtn1.addEventListener('click', answerCheck);
+answerBtn2.addEventListener('click', answerCheck);
+answerBtn3.addEventListener('click', answerCheck);
+answerBtn4.addEventListener('click', answerCheck);
 
 
 
