@@ -4,6 +4,7 @@
     box-sizing: border-box;
   }
   
+  
   body {
     
       color: black;
@@ -11,7 +12,7 @@
       
     }
 
-    
+    /* Header Style Start*/
     .header-container {
         width: 100%;
         height: 70px;
@@ -38,12 +39,14 @@
         font-size: 18px;
     }
 
+    /* Main Container Style Start*/
     .main-container {
         width: 100%;
         height:700px;
         margin-top: 80px;
     }
-
+    
+    /* Intro Style Start*/
     .intro-container {
         width: 500px;
         height: 240px;
@@ -79,6 +82,7 @@
         
     }
 
+    /* Questions Style Start*/
     .questions-container {
         width: 500px;
         height: 280px;
@@ -115,6 +119,7 @@
         color: white;
     }
 
+    /* Final Score Style Start*/
     .final-score-container {
         width: 500px;
         height: 280px;
@@ -147,10 +152,7 @@
         
     }
 
-    
-
-
-
+    /* Highscore Style Start*/
     .highscore-container {
         width: 500px;
         height: 550px;
@@ -187,6 +189,7 @@
        
     }
 
+    /* Response Style Start*/
     .response-div {
         height:2px;
         width: 500px;

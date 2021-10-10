@@ -1,3 +1,4 @@
+// global variables
 var timeRemaining = 75;
 var time = document.querySelector(".timer");
 var score = document.querySelector("#score");
@@ -12,6 +13,7 @@ var highscores = document.querySelector(".highscore-container");
 var scoresEl = document.querySelector("#scores");
 var scores = [];
 
+// global variables (buttons)
 viewScoresBtn = document.querySelector("#view-high-scores");
 startBtn = document.querySelector("#start");
 answerBtn1 = document.querySelector("#answer-1");
@@ -23,6 +25,7 @@ submitBtn = document.querySelector("#submit-button");
 goBackBtn = document.querySelector("#go-back");
 clearBtn = document.querySelector("#clear-scores");
 
+// questions array
 var questionsList = [ 
     { 
         question: "String values must be enclosed within ____ when being assigned to variables.",
@@ -51,6 +54,7 @@ var questionsList = [
     }
 ];
 
+// timer function
 function setTimer() {
     var timerInterval = setInterval(function () {
         timeRemaining--;
@@ -65,6 +69,7 @@ function setTimer() {
     }, 1000);
 }
 
+// quiz start function
 function startQuiz () {
     intro.style.display = "none";
     questions.style.display = "flex";
@@ -73,6 +78,7 @@ function startQuiz () {
     questionsStart(questionCounter);
 }
 
+// function that cycles through questions array
 function questionsStart(id) {
     if (id< questionsList.length) {
         question.textContent = questionsList[id].question;
@@ -84,7 +90,7 @@ function questionsStart(id) {
     }
 }
 
-
+// function that checks if answer is correct or wrong
 function answerCheck(event) {
     event.preventDefault();
     response.style.display = "flex";
@@ -119,10 +125,12 @@ if (questionCounter < questionsList.length) {
     questionCounter++;
 }
 
+// setting parameter
 questionsStart(questionCounter)
 
 };
 
+// function that adds or subtracts score total
 function runningScore(event) {
     event.preventDefault();
     finalScore.style.display= "none";
@@ -139,6 +147,7 @@ function runningScore(event) {
 
     });
 
+    // function that cycles through array and sets score
     scoresEl.innerHTML="";
     for(var i = 0; i < scores.length; i++) {
         var newLi = document.createElement("li");
@@ -148,6 +157,7 @@ function runningScore(event) {
     
 }
 
+// calls to store and display scores
     storeScores();
     displayScores();
 
@@ -164,6 +174,7 @@ function displayScores() {
     }
 }
 
+// function to clear up high scores
 function clearScores() {
     localStorage.clear();
     scoresEl.innerHTML="";
@@ -172,7 +183,7 @@ function clearScores() {
 
 
 
-
+// calls
 
 startBtn.addEventListener("click", startQuiz);
 
